@@ -15,5 +15,15 @@ describe Scanner do
       scanner = Scanner.new(',')
       expect(scanner.array_of_elements('91,21')).to eq(['91',',','21'])
     end
+
+    it "returns [] for input = ''" do
+      scanner = Scanner.new('')
+      expect(scanner.array_of_elements('')).to eq([])
+    end
+
+    it "returns ['conchita wurst'] for input = ''" do
+      scanner = Scanner.new('')
+      expect(scanner.array_of_elements('conchita wurst')).to eq(['conchita', 'wurst'])
+    end
   end
 end

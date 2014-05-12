@@ -1,4 +1,5 @@
 class StringCalculator
+  
   def add(string)
     without_new_lines = string.gsub('\n', ',')
     if without_new_lines.include?(',')
@@ -13,12 +14,5 @@ class StringCalculator
   def sum_of(string)
     array_of_numbers = string.split(',').map { |n| n.to_i }
     sum = array_of_numbers.reduce(:+)
-  end
-
-  def token_spec
-    token_specification = [
-      ["COMMA" ,     /\,/],
-      ["NUMBER",    /-?\d+/
-    ]
   end
 end

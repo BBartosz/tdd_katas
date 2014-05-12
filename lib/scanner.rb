@@ -23,7 +23,8 @@ class Scanner
     spec_list = [
       ["COMMA" ,     /\,/],
       ["NUMBER",     /-?\d+/],
-      ["UNDEFINED",  /./]
+      ["NEWLINE",  /\n/],
+      ["UNDEFINED",  /[a-zA-Z]+/]
     ]
     spec_string = ''
     spec_list.each do |pair|
