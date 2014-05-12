@@ -38,4 +38,14 @@ describe StringCalculator, "#add" do
       expect(calc.add('2,3,4,5')).to eq(14)
     end
   end
+
+  context 'for new line character' do
+    it "return 6 for '1\n2,3'" do 
+      expect(calc.add('1\n2,3')).to eq(6)
+    end
+
+    it "return error for '1\n\n'" do 
+      expect(calc.add('1\n2,3')).to raise_error
+    end
+  end
 end
