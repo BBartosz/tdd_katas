@@ -19,18 +19,25 @@ class Scanner
     Token.new(token_matchdata[token_name.to_sym].to_s, token_name)
   end
 
+  private
+
   def token_spec
     spec_list = [
       ["COMMA" ,     /\,/],
       ["NUMBER",     /-?\d+/],
-      ["NEWLINE",  /\n/],
+      ["NEWLINE",    /\n/],
       ["UNDEFINED",  /[a-zA-Z]+/]
     ]
-    spec_string = ''
-    spec_list.each do |pair|
-      spec_string += ('(?<%s>%s)' % pair) 
-      spec_string += '|' if pair != spec_list.last
-    end
-    regex_spec = %r{#{spec_string}}
+    
+    regex_spec = %r{#{spec_string(spec_list)}}
   end
+
+  def spec_string(spec)
+    spec_string = ''
+    spec.each do |pair|
+      spec_string += ('(?<%s>%s)' % pair) 
+      spec_string += '|' if pair != spec.last
+    end
+    return spec_string
+  end    
 end
